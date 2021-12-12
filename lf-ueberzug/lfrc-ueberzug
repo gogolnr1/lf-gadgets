@@ -1,4 +1,4 @@
-set previewer lf-ueberzug-previewer
-set cleaner lf-ueberzug-cleaner
+lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf-ueberzug/lf-ueberzug-previewer"
+lf -remote "send $id set cleaner ${XDG_CONFIG_HOME:-$HOME/.config}/lf-ueberzug/lf-ueberzug-cleaner"
 
 # Put additional configuration which shall only apply to lf-ueberzug below

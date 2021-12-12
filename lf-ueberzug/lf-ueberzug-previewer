@@ -10,7 +10,7 @@ preview() {
 	EOF
 }
 
-lf-ueberzug-cleaner # clean active preview
+${XDG_CONFIG_HOME:-$HOME/.config}/lf-ueberzug/lf-ueberzug-cleaner # clean active preview
 
 file="$1"; shift
 case "$(basename "$file" | tr '[:upper:]' '[:lower:]')" in
@@ -19,8 +19,8 @@ case "$(basename "$file" | tr '[:upper:]' '[:lower:]')" in
 *.rar) unrar l "$file" ;;
 *.7z) 7z l "$file" ;;
 *.avi|*.mp4|*.mkv)
-	thumbnail="$LF_UEBERZUG_TEMPDIR/thumbnail.png"
-	ffmpeg -y -i "$file" -vframes 1 "$thumbnail"
+	thumbnail="$LF_UEBERZUG_TEMPDIR/thumbnail.jpg"
+	ffmpegthumbnailer -i "$file" -s 600 -o "$thumbnail"
 	preview "$thumbnail" "$@"
 	;;
 *.pdf)
